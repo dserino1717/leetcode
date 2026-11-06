@@ -5,12 +5,10 @@ WITH weights AS (SELECT
     person_name,
     weight,
     SUM(weight) OVER (ORDER BY turn) total_weight
-FROM queue),
-max_turn AS (SELECT
-    MAX(turn) turn_max
-FROM weights w
-WHERE total_weight <= 1000)
+FROM queue)
 SELECT 
     person_name
 FROM weights w
-JOIN max_turn m ON w.turn = m.turn_max;
+WHERE total_weight <= 1000
+ORDER BY turn DESC
+LIMIT 1;
