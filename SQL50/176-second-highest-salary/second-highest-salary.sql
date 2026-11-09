@@ -8,5 +8,4 @@ WITH rnk AS (
 SELECT
     MAX(salary) AS SecondHighestSalary
 FROM rnk
-WHERE salary_rank = 2
-LIMIT 1;
+WHERE salary_rank = 2;
